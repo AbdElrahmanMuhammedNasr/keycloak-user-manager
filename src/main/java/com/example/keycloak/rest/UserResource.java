@@ -3,10 +3,11 @@ package com.example.keycloak.rest;
 import com.example.keycloak.model.UserVM;
 import com.example.keycloak.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 @RestController
@@ -21,8 +22,18 @@ public class UserResource {
         return "test";
     }
 
+
+//  @PostMapping("/login")
+//  public Object login(Authentication authentication){
+//        return userService.login(authentication);
+//    }
     @PostMapping("/create")
-    public UserVM createUser(@RequestBody UserVM user){
+    public Object createUser(@RequestBody UserVM user){
         return userService.createUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public Object deleteUser(@PathVariable String id){
+        return userService.deleteUser(id);
     }
 }

@@ -1,0 +1,23 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:6521/auth/realms/medical
+          jwk-set-uri: http://localhost:6521/auth/realms/medical/protocol/openid-connect/certs
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+c-keycloak:
+  server-url: http://localhost:6521/auth
+  realm: medical
+  client: user-manager-client
+  secret: ioSR6KSghanZWnbzeWwT1s9JGB86ivn0
+

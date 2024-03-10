@@ -5,8 +5,10 @@ import org.springframework.security.core.Authentication;
 
 public interface UserService {
 
-    Object login(Authentication authentication);
+    Object login();
     Object createUser(UserVM user);
 
     Boolean deleteUser(String Id);
+    Object updateUserRole(String userId);
+    Object removeUserRole(String userId);
 }
